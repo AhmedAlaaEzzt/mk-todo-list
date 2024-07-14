@@ -1,6 +1,9 @@
 function Prent(){
 return(
-    <h1>hello world</h1>
+    <div>
+        <h1>Meshari</h1>
+    </div>
+    
 );
 }
 export default Prent
