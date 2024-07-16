@@ -10,3 +10,4 @@ const ColoredText: React.FC<ColoredTextProps> = ({ text, color }) => {
 };
 
 export default ColoredText;
+    

@@ -1,10 +1,6 @@
-import CardTask from "./CardTask";
+import CardTask from "./component/CardTask";
 function App() {
-  return (
-    <>
-      <CardTask />
-    </>
-  );
+  return <CardTask />;
 }
 
 export default App;
