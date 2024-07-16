@@ -1,7 +1,9 @@
+import React from "react";
 import todo from "../assets/to-do-list.png";
-
 import "./card.css";
-function CardTask() {
+import AddCheck from "./AddCheck";
+
+const CardTask: React.FC = () => {
   return (
     <div style={{ textAlign: "center", padding: "15%" }}>
       <div className="container">
@@ -9,13 +11,11 @@ function CardTask() {
           <h2>
             ToDo <img src={todo} alt="To-Do List" className="img-todo" />
           </h2>
-          <div className="row">
-            <input type="text" id="input-box" placeholder="Enter your task" />
-          </div>
+          <AddCheck />
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default CardTask;
