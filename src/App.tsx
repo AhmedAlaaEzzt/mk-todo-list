@@ -1,5 +1,6 @@
+import CardTask from "./components/card/CardTask";
 function App() {
-  return <>starting point</>;
+  return <CardTask />;
 }
 
 export default App;
