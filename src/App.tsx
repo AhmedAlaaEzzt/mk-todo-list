@@ -1,4 +1,4 @@
-import CardTask from "./component/CardTask";
+import CardTask from "./CardTask";
 function App() {
   return <CardTask />;
 }

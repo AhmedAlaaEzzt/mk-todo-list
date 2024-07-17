@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./card.css";
-import roundIcon from "../assets/round.png";
-import checkIcon from "../assets/check.png";
+import roundIcon from "./assets/round.png";
+import checkIcon from "./assets/check.png";
 
 interface Task {
   text: string;

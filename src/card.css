@@ -43,9 +43,12 @@
 img {
   height: 30px;
   width: 30px;
-
 }
 
-ul{
+ul {
   text-align: left;
+}
+.div1 {
+  text-align: center;
+  padding: 15%;
 }
