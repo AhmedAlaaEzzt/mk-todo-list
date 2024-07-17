@@ -1,0 +1,13 @@
+.task-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.task-icon {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}

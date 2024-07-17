@@ -1,43 +1,49 @@
 .container {
-    margin: 0 auto;
-    max-width: 600px;
-  }
-  
-  .dolist {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .dolist h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  #input-box {
-    width: 90%;
-    padding: 10px;
-    font-size: 16px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  #list-container {
-    list-style: none;
-    padding: 0;
-  }
-  
-  #list-container li {
-    background-color: #fff;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 10px;
-  }
-  .img-todo {
-    height: 30px;
-    width: 30px;
-  }
-  
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.dolist {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 1 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+li {
+  background-color: #ececec;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+.img-todo {
+  height: 30px;
+  width: 30px;
+}
+input {
+  width: 70%;
+}
+.add-task button {
+  padding: 10px 15px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* checkTask.css */
+.task-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.task-icon {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}
