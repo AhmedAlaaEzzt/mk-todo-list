@@ -4,7 +4,7 @@ function List() {
       <ul>
         <li>A</li>
         <li>B</li>
-        <ol type="1">
+        <ol>
           <li>B1</li>
           <li>B2</li>
           <ul>
@@ -20,7 +20,7 @@ function List() {
             <li>B2c</li>
           </ul>
           <li>B3</li>
-          <ol type="1">
+          <ol>
             <li>B31</li>
             <li>B32</li>
           </ol>
