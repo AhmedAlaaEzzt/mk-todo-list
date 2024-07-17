@@ -1,7 +1,7 @@
 import { useState } from "react";
 import todo from "../assets/to-do-list.png";
 import AddTask from "./AddTask";
-import CheckTask from "./CheckTask";
+import DelTask from "./DelTask";
 import "./card.css";
 
 function CardTask() {
@@ -11,8 +11,12 @@ function CardTask() {
     setTasks([...tasks, task]);
   };
 
+  const handleDeleteTask = (index: number) => {
+    setTasks(tasks.filter((_, i) => i !== index));
+  };
+
   return (
-    <div style={{ textAlign: "center", padding: "15%" }}>
+    <div className="Div2">
       <div className="container">
         <div className="dolist">
           <h2>
@@ -23,7 +27,11 @@ function CardTask() {
           </div>
           <ul className="task-list">
             {tasks.map((task, index) => (
-              <CheckTask key={index} task={task} />
+              <DelTask
+                key={index}
+                task={task}
+                onDelete={() => handleDeleteTask(index)}
+              />
             ))}
           </ul>
         </div>
