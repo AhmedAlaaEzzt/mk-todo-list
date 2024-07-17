@@ -33,7 +33,7 @@ input {
   border-radius: 5px;
   cursor: pointer;
 }
-/* checkTask.css */
+
 .task-item {
   display: flex;
   align-items: center;
@@ -46,4 +46,8 @@ input {
   margin-right: 10px;
   width: 20px;
   height: 20px;
+}
+.Div2 {
+  text-align: center;
+  padding: 15%;
 }
