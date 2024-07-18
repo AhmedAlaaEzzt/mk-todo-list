@@ -1,5 +1,7 @@
+import Printe from "./Printe.tsx";
+
 function App() {
-  return <>starting point</>;
+  return <Printe />;
 }
 
 export default App;
