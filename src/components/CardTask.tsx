@@ -2,21 +2,33 @@ import { useState } from "react";
 import todo from "../assets/to-do-list.png";
 import AddTask from "./AddTask";
 import DelTask from "./DelTask";
+import Search from "./Search";
 import "./card.css";
 
 function CardTask() {
   const [tasks, setTasks] = useState<string[]>([]);
+  const [filteredTasks, setFilteredTasks] = useState<string[]>(tasks);
 
   const handleAddTask = (task: string) => {
     setTasks([...tasks, task]);
+    setFilteredTasks([...tasks, task]);
   };
 
   const handleDeleteTask = (index: number) => {
-    setTasks(tasks.filter((_, i) => i !== index));
+    const newTasks = tasks.filter((_, i) => i !== index);
+    setTasks(newTasks);
+    setFilteredTasks(newTasks);
+  };
+
+  const handleSearch = (query: string) => {
+    const filtered = tasks.filter((task) =>
+      task.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredTasks(filtered);
   };
 
   return (
-    <div className="Div2">
+    <div style={{ textAlign: "center", padding: "15%" }}>
       <div className="container">
         <div className="dolist">
           <h2>
@@ -24,9 +36,10 @@ function CardTask() {
           </h2>
           <div className="row">
             <AddTask onAddTask={handleAddTask} />
+            <Search onSearch={handleSearch} />
           </div>
           <ul className="task-list">
-            {tasks.map((task, index) => (
+            {filteredTasks.map((task, index) => (
               <DelTask
                 key={index}
                 task={task}
