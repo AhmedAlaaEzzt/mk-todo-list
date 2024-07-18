@@ -1,5 +1,7 @@
+import List from "./components/list/List.tsx";
+
 function App() {
-  return <>starting point</>;
+  return <List />;
 }
 
 export default App;
