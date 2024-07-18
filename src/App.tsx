@@ -1,11 +1,7 @@
-import List from "./List.tsx";
+import Printe from "./Printe.tsx";
 
 function App() {
-  return (
-    <>
-      <List />
-    </>
-  );
+  return <Printe />;
 }
 
 export default App;
