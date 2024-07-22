@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Assets",
+    "value": 90,
+    "details": [
+      { "status": "active", "label": "Active", "count": 9 },
+      { "status": "inactive", "label": "Inactive", "count": 3 },
+      { "status": "unassigned", "label": "Unassigned", "count": 84 },
+      { "status": "offline", "label": "Offline", "count": 1 }
+    ]
+  },
+  {
+    "title": "Gateways",
+    "value": 7,
+    "details": [
+      { "status": "online", "label": "Online", "count": 0 },
+      { "status": "offline", "label": "Offline", "count": 7 },
+      { "status": "unapproved", "label": "Unapproved", "count": 0 }
+    ]
+  },
+  {
+    "title": "Anchors",
+    "value": 16,
+    "details": [
+      { "status": "online", "label": "Online", "count": 4 },
+      { "status": "offline", "label": "Offline", "count": 9 },
+      { "status": "unapproved", "label": "Unapproved", "count": 3 }
+    ]
+  }
+]
