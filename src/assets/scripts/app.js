@@ -1,4 +1,6 @@
-const a = 5;
-const b = 3;
-let sum = a - b;
-alert(sum);
+function add(nmber1, number2) {
+  const result = nmber1 + number2;
+  return result;
+}
+const addResult = add(5, 8);
+alert(addResult);
