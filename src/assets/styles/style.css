@@ -1,0 +1,10 @@
+.border {
+  margin: 10px;
+  margin-top: 10px;
+  border-style: groove;
+}
+input {
+  text-align: center;
+  height: 30px;
+  margin: 20px;
+}
