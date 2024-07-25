@@ -13,8 +13,15 @@ function add() {
   const result = num1 + num2;
 
   output(result, outputDiv);
-  array.push(outputDiv2);
-  console.log(result);
+
+  const operation = {
+    operation: "Add",
+    resultN: result,
+    number1: num1,
+    number2: num2,
+  };
+  array.push(operation);
+  console.log(array);
 }
 
 function sub() {
