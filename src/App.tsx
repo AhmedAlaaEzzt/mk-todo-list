@@ -1,5 +1,6 @@
+import Workforce from "./components/Workforce"
 function App() {
-  return <>starting point</>;
+  return <Workforce/>;
 }
 
 export default App;
