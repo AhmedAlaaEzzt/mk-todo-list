@@ -2,9 +2,8 @@ import React from "react";
 import zoomImage from "../assets/img/fullscreen.png";
 import workar from "../assets/img/construction-worker.png";
 import workar1 from "../assets/img/construction-worker1.png";
-import searsh1 from "../assets/img/searsh1.png"; // استيراد أيقونة البحث
-import buttonIcon from "../assets/img/close.png"; // استيراد أيقونة الزر الجديد
-
+import searsh1 from "../assets/img/searsh1.png"; 
+import buttonIcon from "../assets/img/close.png"; 
 function Workforce() {
   return (
     <div className="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
