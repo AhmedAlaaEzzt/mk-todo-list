@@ -1,5 +1,7 @@
+import Example from "./components/Example";
+
 function App() {
-  return <>starting point</>;
+  return <Example />;
 }
 
 export default App;
