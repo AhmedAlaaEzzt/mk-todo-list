@@ -11,14 +11,14 @@ function App() {
         />
 
         <WorkersOnFloor
-          currentWorkers={48}
-          totalWorkers={48}
-          Workers={"Workers on floor"}
+          currentWorkers={4}
+          totalWorkers={4}
+          Workers={"Crews on floor"}
         />
         <WorkersOnFloor
           currentWorkers={4}
           totalWorkers={4}
-          Workers={"Crews on floor"}
+          Workers={"Companies on floor"}
         />
       </div>
     </>
