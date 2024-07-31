@@ -1,0 +1,11 @@
+@import "@arcgis/core/assets/esri/themes/light/main.css";
+body {
+  margin: 0;
+}
+.mapDiv {
+  background-color: lightblue;
+  height: 100vh;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
