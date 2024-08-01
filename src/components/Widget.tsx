@@ -6,7 +6,7 @@ import layers from "../assets/img/layers.png";
 import camera from "../assets/img/security-camera.png";
 import view from "../assets/img/view.png";
 import settings from "../assets/img/control.png";
-import Vieweye from "./Vieweye";
+import Secondwidget from "./Secondwidget";
 
 const Widget = () => {
   const [showWorkforce, setShowWorkforce] = useState(false);
@@ -78,7 +78,7 @@ const Widget = () => {
 
       {showWorkforce && (
         <div className="fixed ml-20 bg-white rounded-lg shadow-md ">
-          <Vieweye />
+          <Secondwidget />
         </div>
       )}
     </div>

@@ -8,19 +8,19 @@ import Widget from "./Widget";
 
 const ViewLiveMap = () => {
   const mapRef = useRef(null);
-
+  // Write the ArcGIS JavaScript API to add the map
   useEffect(() => {
     const viewReadyHandler = (event: { target: any }) => {
       const view = event.target;
       const map = view.map;
       const graphicsLayer = new GraphicsLayer();
       map.add(graphicsLayer);
-
+      // Location
       const point = new Point({
         longitude: 36.47621073304157,
         latitude: 28.404822629941677,
       });
-
+      // Point color
       const symbol = new SimpleMarkerSymbol({
         color: [226, 119, 140],
       });
