@@ -6,6 +6,23 @@ import Graphic from "@arcgis/core/Graphic";
 import SimpleMarkerSymbol from "@arcgis/core/symbols/SimpleMarkerSymbol";
 import Widget from "./components/widget";
 
+const point = new Point({
+  longitude: 36.47618573252876,
+  latitude: 28.4044846389379,
+});
+
+const simpleMarkerSymbol = new SimpleMarkerSymbol({
+  color: "red",
+});
+
+const graphic = new Graphic({
+  geometry: point,
+  symbol: simpleMarkerSymbol,
+});
+
+const graphicsLayer = new GraphicsLayer();
+graphicsLayer.add(graphic);
+
 function App() {
   return (
     <>
@@ -18,24 +35,7 @@ function App() {
               event.target;
             view.ui.add("myDev", "bottom-left");
 
-            const graphicsLayer = new GraphicsLayer();
             map.add(graphicsLayer);
-
-            const point = new Point({
-              longitude: 36.47618573252876,
-              latitude: 28.4044846389379,
-            });
-
-            const simpleMarkerSymbol = new SimpleMarkerSymbol({
-              color: "red",
-            });
-
-            const graphic = new Graphic({
-              geometry: point,
-              symbol: simpleMarkerSymbol,
-            });
-
-            graphicsLayer.add(graphic);
           }}
         ></ArcgisMap>
         <div>
