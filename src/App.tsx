@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ArcgisMap } from "@arcgis/map-components-react";
 import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer";
 import Point from "@arcgis/core/geometry/Point";
@@ -7,7 +8,12 @@ import Widget from "./components/widget";
 import "./App.css";
 import WorkforceLegends from "./components/WorkforceLegends";
 import Sidebar from "./components/sidebar";
+import Workforce from "./components/Workforce ";
+
 function App() {
+  const [showWorkforce, setShowWorkforce] = useState(false);
+  const [showLegends, setShowLegends] = useState(true);
+
   return (
     <>
       <div className="MapDev relative">
@@ -23,6 +29,7 @@ function App() {
             container.className =
               "flex flex-row space-x-4 absolute bottom-4 right-4";
             view.ui.add(container, "manual");
+
             const legendWidget = document.createElement("div");
             legendWidget.id = "WorkforceLegends";
             view.ui.add(legendWidget, "bottom-left");
@@ -30,6 +37,7 @@ function App() {
             const sidebarContainer = document.createElement("div");
             sidebarContainer.id = "Sidebar";
             view.ui.add(sidebarContainer, "top-left");
+
             const widget1 = document.createElement("div");
             widget1.id = "widget1";
             container.appendChild(widget1);
@@ -62,9 +70,11 @@ function App() {
             graphicsLayer.add(graphic);
           }}
         ></ArcgisMap>
-        <div>
-          <Sidebar id="Sidebar" />
-        </div>
+        <Sidebar
+          id="Sidebar"
+          onIconClick={() => setShowWorkforce(!showWorkforce)}
+          onConstructionClick={() => setShowLegends(!showLegends)}
+        />
         <div
           id="widgets-container"
           className="flex flex-row space-x-4 absolute bottom-4 right-4"
@@ -88,9 +98,12 @@ function App() {
             workers="Crews on floor"
           />
         </div>
-        <div id="WorkforceLegends">
-          <WorkforceLegends id="WorkforceLegends" />
-        </div>
+        {showLegends && <WorkforceLegends id="WorkforceLegends" />}
+        {showWorkforce && (
+          <div className="flex absolute top-4 left-[80px] space-x-4">
+            <Workforce id="Workforcen" />
+          </div>
+        )}
       </div>
     </>
   );

@@ -4,7 +4,7 @@ function WorkforceLegends(props: { id: string }) {
   return (
     <div
       id={id}
-      className="bg-white p-4 rounded shadow-md w-64 absolute bottom-4 left-4 ml-10"
+      className="bg-white p-4 rounded shadow-md w-64 absolute bottom-4 left-9 ml-10"
     >
       <div className="flex items-center bg-gray-50 p-2 rounded mb-2 ">
         <div className="w-4 h-4 bg-green-500 rounded-full mr-2"></div>
