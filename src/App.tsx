@@ -5,7 +5,7 @@ import Graphic from "@arcgis/core/Graphic";
 import SimpleMarkerSymbol from "@arcgis/core/symbols/SimpleMarkerSymbol";
 import Widget from "./components/widget";
 import "./App.css";
-
+import WorkforceLegends from "./components/WorkforceLegends";
 function App() {
   return (
     <>
@@ -22,6 +22,9 @@ function App() {
             container.className =
               "flex flex-row space-x-4 absolute bottom-4 right-4";
             view.ui.add(container, "manual");
+            const legendWidget = document.createElement("div");
+            legendWidget.id = "WorkforceLegends";
+            view.ui.add(legendWidget, "bottom-left");
 
             const widget1 = document.createElement("div");
             widget1.id = "widget1";
@@ -77,6 +80,9 @@ function App() {
             totalWorkers={30}
             workers="Crews on floor"
           />
+        </div>
+        <div id="WorkforceLegends">
+          <WorkforceLegends id="WorkforceLegends" />
         </div>
       </div>
     </>
