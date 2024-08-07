@@ -6,6 +6,7 @@ import SimpleMarkerSymbol from "@arcgis/core/symbols/SimpleMarkerSymbol";
 import Widget from "./components/widget";
 import "./App.css";
 import WorkforceLegends from "./components/WorkforceLegends";
+import Sidebar from "./components/sidebar";
 function App() {
   return (
     <>
@@ -26,6 +27,9 @@ function App() {
             legendWidget.id = "WorkforceLegends";
             view.ui.add(legendWidget, "bottom-left");
 
+            const sidebarContainer = document.createElement("div");
+            sidebarContainer.id = "Sidebar";
+            view.ui.add(sidebarContainer, "top-left");
             const widget1 = document.createElement("div");
             widget1.id = "widget1";
             container.appendChild(widget1);
@@ -58,6 +62,9 @@ function App() {
             graphicsLayer.add(graphic);
           }}
         ></ArcgisMap>
+        <div>
+          <Sidebar id="Sidebar" />
+        </div>
         <div
           id="widgets-container"
           className="flex flex-row space-x-4 absolute bottom-4 right-4"
