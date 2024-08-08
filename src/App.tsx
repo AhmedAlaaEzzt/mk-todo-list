@@ -10,7 +10,11 @@ import Sidebar from "./components/sidebar";
 import Workforce from "./components/Workforce ";
 import Polygon from "@arcgis/core/geometry/Polygon";
 import SimpleFillSymbol from "@arcgis/core/symbols/SimpleFillSymbol";
+import GeoJSONLayer from "@arcgis/core/layers/GeoJSONLayer";
 import "./App.css";
+
+const Url =
+  "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson";
 
 function App() {
   const [showWorkforce, setShowWorkforce] = useState(false);
@@ -20,15 +24,24 @@ function App() {
   useEffect(() => {
     if (mapRef.current) {
       const view = mapRef.current;
+
+      const geoJsonLayer = new GeoJSONLayer({
+        url: Url,
+      });
+      view.map.add(geoJsonLayer);
+
       const graphicsLayer = new GraphicsLayer();
       view.map.add(graphicsLayer);
+
       const point = new Point({
         longitude: 36.47618573252876,
         latitude: 28.4044846389379,
       });
+
       const simpleMarkerSymbol = new SimpleMarkerSymbol({
         color: "red",
       });
+
       const graphic = new Graphic({
         geometry: point,
         symbol: simpleMarkerSymbol,
@@ -71,6 +84,7 @@ function App() {
     <>
       <div className="MapDev relative">
         <ArcgisMap
+          basemap={"gray-vector"}
           center={[36.47618573252876, 28.4044846389379]}
           zoom={17}
           onArcgisViewReadyChange={(event) => {
