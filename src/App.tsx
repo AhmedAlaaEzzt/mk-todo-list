@@ -13,8 +13,8 @@ import SimpleFillSymbol from "@arcgis/core/symbols/SimpleFillSymbol";
 import GeoJSONLayer from "@arcgis/core/layers/GeoJSONLayer";
 import "./App.css";
 
-const Url =
-  "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson";
+// const Url =
+//   "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson";
 
 function App() {
   const [showWorkforce, setShowWorkforce] = useState(false);
@@ -26,7 +26,7 @@ function App() {
       const view = mapRef.current;
 
       const geoJsonLayer = new GeoJSONLayer({
-        url: Url,
+        url: "http://localhost:3000/earthquake",
       });
       view.map.add(geoJsonLayer);
 
