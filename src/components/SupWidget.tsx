@@ -1,23 +1,30 @@
 import worker from "../assets/imgs/construction-worker.png";
 import Manworker from "../assets/imgs/man.png";
+import filter from "../assets/imgs/filter.png";
 
-function SupWidget() {
+function SupWidget(props: { id: string }) {
+  const { id } = props;
+
   return (
-    <div className="fixed  p-6 bg-white rounded-lg shadow-md w-[300px] h-[350px] ">
+    <div id={id} className="p-6 bg-white rounded-lg shadow-md w-[300px] h-[350px] ">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-semibold text-brown-600 flex items-center">
-          <img src={worker} alt="Worker" className="w-6 h-6 mr-2" />
+        <h2 className="text-xl font-semibold text-brown-600 flex items-center text-[#9B624A]">
+          <img src={worker} alt="Worker" className="w-6 h-6 mr-2 " />
           Workforce
         </h2>
         <button className="text-gray-600">×</button>
       </div>
-      <div className="mb-4">
+      <div className="mb-4  ">
         <input
           type="text"
           placeholder="Search"
-          className="w-full p-2 border rounded"
+          className="w-50 p-2 border rounded"
         />
+        <button className=" m-2 border  p-2 rounded">
+          <img src={filter} className="h-[15px] " />
+        </button>
       </div>
+
       <div className="space-y-4">
         {Array(1)
           .fill(0)

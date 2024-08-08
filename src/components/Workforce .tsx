@@ -13,7 +13,7 @@ const Workforce = (props: { id: string }) => {
   const [showWorkforce, setShowWorkforce] = useState(false);
 
   return (
-    <div id={id} className=" bg-white p-4 rounded-lg shadow-md">
+    <div id={id} className=" bg-white p-4  rounded-lg shadow-md">
       <div className="space-y-6">
         <div className="space-y-4">
           <h2 className="text-sm font-semibold text-gray-600">Space:</h2>
@@ -79,7 +79,7 @@ const Workforce = (props: { id: string }) => {
 
       {showWorkforce && (
         <div className="absolute top-4 left-[220px] space-x-4">
-          <SupWidget />
+          <SupWidget id={"id"} />
         </div>
       )}
     </div>

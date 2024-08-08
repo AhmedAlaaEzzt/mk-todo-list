@@ -3,3 +3,7 @@
   height: 100vh;
   display: block;
 }
+/* App.css */
+.esri-view .esri-ui-bottom-right {
+  display: none;
+}

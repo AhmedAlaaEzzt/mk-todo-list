@@ -1,3 +1,7 @@
+@import "@arcgis/core/assets/esri/themes/dark/main.css";
+.esri-attribution {
+  display: none;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
