@@ -11,7 +11,41 @@ import Workforce from "./components/Workforce ";
 import Polygon from "@arcgis/core/geometry/Polygon";
 import SimpleFillSymbol from "@arcgis/core/symbols/SimpleFillSymbol";
 import GeoJSONLayer from "@arcgis/core/layers/GeoJSONLayer";
+import PopupTemplate from "@arcgis/core/PopupTemplate";
+
 import "./App.css";
+// const template =new PopupTemplate({
+//   title :"{type} - {mag}",
+//   content :"type: {type} - Magnitude: {mag}"
+// })
+const template = new PopupTemplate({
+  title: "Earthquake Info",
+  content: [
+    {
+      type: "fields",
+      fieldInfos: [
+        {
+          fieldName: "place",
+          label: "Place",
+          visible: true,
+        },
+        {
+          fieldName: "mag",
+          label: "Magnitude",
+          visible: true,
+        },
+        {
+          fieldName: "time",
+          label: "Time",
+          visible: true,
+          format: {
+            dateFormat: "short-date-short-time",
+          },
+        },
+      ],
+    },
+  ],
+});
 
 // const Url =
 //   "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson";
@@ -27,6 +61,7 @@ function App() {
 
       const geoJsonLayer = new GeoJSONLayer({
         url: "http://localhost:3000/earthquake",
+        popupTemplate: template,
       });
       view.map.add(geoJsonLayer);
 
