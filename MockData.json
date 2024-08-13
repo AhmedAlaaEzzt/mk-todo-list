@@ -31,12 +31,24 @@
         "properties": {
           "place": "Near Tabuk, Saudi Arabia",
           "time": 1723102238141,
-          "title": "Tabuk, Saudi Arabia - Second Point"
-
+          "title": "Tabuk, Saudi Arabia - Third Point"
         },
         "geometry": {
           "type": "Point",
           "coordinates": [36.47703407168578, 28.405056441898765]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "place": "Near Tabuk, Saudi Arabia",
+          "time": 1723102238142,
+          "title": "Tabuk, Saudi Arabia - New Crew Point",
+          "type": "crew"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [36.47679411735024, 28.40535674065721]
         }
       }
     ]
