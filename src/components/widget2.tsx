@@ -1,10 +1,10 @@
-function Widget(props: {
+function Widget2(props: {
   id: string;
   currentWorkers: number;
   totalWorkers: number;
   workers: string;
 }) {
-  const { id, currentWorkers, totalWorkers, workers } = props;
+  const { id, currentWorkers, workers } = props;
 
   return (
     <div
@@ -14,14 +14,14 @@ function Widget(props: {
       <div>
         <div className="text-[#212121] text-sm">{workers}</div>
         <div className="flex items-baseline">
-          <span className="text-blue-800 text-xl font-semibold">
+          <span className="text-[#039855] text-xl font-semibold">
             {currentWorkers}
           </span>
-          <span className="text-[#666666] text-xl ml-1">/{totalWorkers}</span>
+          {/* <span className="text-[#666666] text-xl ml-1">/{totalWorkers}</span> */}
         </div>
       </div>
     </div>
   );
 }
 
-export default Widget;
+export default Widget2;

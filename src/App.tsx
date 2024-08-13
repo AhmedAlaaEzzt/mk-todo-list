@@ -1,94 +1,81 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { ArcgisMap } from "@arcgis/map-components-react";
 import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer";
-import Point from "@arcgis/core/geometry/Point";
-import Graphic from "@arcgis/core/Graphic";
-import SimpleMarkerSymbol from "@arcgis/core/symbols/SimpleMarkerSymbol";
+// import Point from "@arcgis/core/geometry/Point";
+// import Graphic from "@arcgis/core/Graphic";
+// import SimpleMarkerSymbol from "@arcgis/core/symbols/SimpleMarkerSymbol";
+import SimpleRenderer from "@arcgis/core/renderers/SimpleRenderer";
+import SimpleMarkerSymbol from "@arcgis/core/symbols/SimpleMarkerSymbol.js";
 import Widget from "./components/widget";
+// import Widget2 from "./components/widget2";
 import WorkforceLegends from "./components/WorkforceLegends";
 import Sidebar from "./components/sidebar";
 import Workforce from "./components/Workforce ";
-import Polygon from "@arcgis/core/geometry/Polygon";
-import SimpleFillSymbol from "@arcgis/core/symbols/SimpleFillSymbol";
 import GeoJSONLayer from "@arcgis/core/layers/GeoJSONLayer";
+import template from "./components/popup";
 import "./App.css";
-
-// const Url =
-//   "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson";
+const simpleMarkerSymbol = new SimpleMarkerSymbol({
+  color: "#F97316",
+});
+const simpleRenderer = new SimpleRenderer({
+  symbol: simpleMarkerSymbol,
+});
 
 function App() {
   const [showWorkforce, setShowWorkforce] = useState(false);
   const [showLegends, setShowLegends] = useState(true);
-  const mapRef = useRef<__esri.MapView | null>(null);
+  const [pointCount, setPointCount] = useState(0);
+  const [mapView, setMapView] = useState<__esri.MapView>();
 
   useEffect(() => {
-    if (mapRef.current) {
-      const view = mapRef.current;
+    if (!mapView) return;
 
-      const geoJsonLayer = new GeoJSONLayer({
-        url: "http://localhost:3000/earthquake",
+    const geoJsonLayer = new GeoJSONLayer({
+      url: "http://localhost:3000/earthquake",
+      popupTemplate: template,
+      renderer: simpleRenderer,
+      refreshInterval: 0.12,
+    });
+
+    geoJsonLayer.when(() => {
+      geoJsonLayer.queryFeatures().then((result) => {
+        setPointCount(result.features.length);
       });
-      view.map.add(geoJsonLayer);
+    });
 
-      const graphicsLayer = new GraphicsLayer();
-      view.map.add(graphicsLayer);
+    mapView.map.add(geoJsonLayer);
 
-      const point = new Point({
-        longitude: 36.47618573252876,
-        latitude: 28.4044846389379,
-      });
+    const graphicsLayer = new GraphicsLayer();
+    mapView.map.add(graphicsLayer);
 
-      const simpleMarkerSymbol = new SimpleMarkerSymbol({
-        color: "red",
-      });
+    // const point = new Point({
+    //   longitude: 36.47618573252876,
+    //   latitude: 28.4044846389379,
+    // });
 
-      const graphic = new Graphic({
-        geometry: point,
-        symbol: simpleMarkerSymbol,
-      });
+    // const simpleMarkerSymbol = new SimpleMarkerSymbol({
+    //   color: "red",
+    // });
 
-      graphicsLayer.add(graphic);
+    // const graphic = new Graphic({
+    //   geometry: point,
+    //   symbol: simpleMarkerSymbol,
+    // });
 
-      const polygon = new Polygon({
-        rings: [
-          [
-            [36.47699248434162, 28.40572026796592],
-            [36.47752491013449, 28.405042430882034],
-            [36.474302332960235, 28.403132139403255],
-            [36.47376990716609, 28.40399485594905],
-            [36.47700649554554, 28.405769565039108],
-          ],
-        ],
-      });
-
-      const fillSymbol = new SimpleFillSymbol({
-        color: [227, 139, 79, 0.8],
-        outline: {
-          color: [255, 255, 255],
-          width: 1,
-        },
-      });
-
-      const polygonGraphic = new Graphic({
-        geometry: polygon,
-        symbol: fillSymbol,
-      });
-
-      const graphicsLayer2 = new GraphicsLayer();
-      graphicsLayer2.add(polygonGraphic);
-      view.map.add(graphicsLayer2);
-    }
-  }, []);
+    // graphicsLayer.add(graphic);
+  }, [mapView]);
 
   return (
     <>
       <div className="MapDev relative">
         <ArcgisMap
-          basemap={"gray-vector"}
+          basemap={"hybrid"}
           center={[36.47618573252876, 28.4044846389379]}
-          zoom={17}
+          zoom={18}
           onArcgisViewReadyChange={(event) => {
-            mapRef.current = event.target.view;
+            const { view } = event.target;
+            setMapView(view);
+            view.ui.remove("attribution");
           }}
         />
         <Sidebar
@@ -102,15 +89,15 @@ function App() {
         >
           <Widget
             id="widget1"
-            currentWorkers={10}
-            totalWorkers={20}
+            currentWorkers={pointCount}
+            totalWorkers={pointCount}
             workers="Workers on floor"
           />
           <Widget
             id="widget2"
-            currentWorkers={15}
-            totalWorkers={25}
             workers="Workers on floor"
+            currentWorkers={pointCount}
+            totalWorkers={pointCount}
           />
           <Widget
             id="widget3"
