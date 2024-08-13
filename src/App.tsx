@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ArcgisMap } from "@arcgis/map-components-react";
 import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer";
 // import Point from "@arcgis/core/geometry/Point";
@@ -14,6 +14,7 @@ import Workforce from "./components/Workforce ";
 import GeoJSONLayer from "@arcgis/core/layers/GeoJSONLayer";
 import template from "./components/popup";
 import "./App.css";
+
 const simpleMarkerSymbol = new SimpleMarkerSymbol({
   color: "#F97316",
 });
@@ -26,15 +27,18 @@ function App() {
   const [showLegends, setShowLegends] = useState(true);
   const [pointCount, setPointCount] = useState(0);
   const [mapView, setMapView] = useState<__esri.MapView>();
-
-  useEffect(() => {
-    if (!mapView) return;
+  // fetch the data from a MockData.json
+  if (mapView) {
+    // Verify the map is modified
+    fetch("./MockData.json").then((data) => {
+      console.log("Data from MockData.json:", data);
+    });
 
     const geoJsonLayer = new GeoJSONLayer({
       url: "http://localhost:3000/earthquake",
       popupTemplate: template,
       renderer: simpleRenderer,
-      refreshInterval: 0.12,
+      refreshInterval: 0.125,
     });
 
     geoJsonLayer.when(() => {
@@ -63,7 +67,7 @@ function App() {
     // });
 
     // graphicsLayer.add(graphic);
-  }, [mapView]);
+  }
 
   return (
     <>
@@ -101,8 +105,8 @@ function App() {
           />
           <Widget
             id="widget3"
-            currentWorkers={20}
-            totalWorkers={30}
+            currentWorkers={0}
+            totalWorkers={0}
             workers="Crews on floor"
           />
         </div>
