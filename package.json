@@ -14,11 +14,13 @@
     "@arcgis/core": "^4.30.9",
     "@arcgis/map-components-react": "^4.30.6",
     "leaflet": "^1.9.4",
+    "lodash": "^4.17.21",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-leaflet": "^4.2.1"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.7",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.13.1",

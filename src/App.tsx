@@ -6,10 +6,12 @@ import SimpleMarkerSymbol from "@arcgis/core/symbols/SimpleMarkerSymbol.js";
 import Widget from "./components/widget";
 import WorkforceLegends from "./components/WorkforceLegends";
 import Sidebar from "./components/sidebar";
-import Workforce from "./components/Workforce ";
+import Workforce from "./components/Workforce";
 import GeoJSONLayer from "@arcgis/core/layers/GeoJSONLayer";
 import template from "./components/popup";
 import "./App.css";
+import throttle from "lodash/throttle";
+import MapView from "@arcgis/core/views/MapView";
 
 const simpleMarkerSymbol = new SimpleMarkerSymbol({
   color: "#F97316",
@@ -24,10 +26,11 @@ function App() {
   const [showLegends, setShowLegends] = useState(true);
   const [pointCount, setPointCount] = useState(0);
   const [mapView, setMapView] = useState<__esri.MapView>();
+
   /*
-We used useEffect here to ensure that once the data is successfully loaded from the mapView, 
-it triggers the fetching of data from the JSON file and then displays that data in the console.
-*/
+  We used useEffect here to ensure that once the data is successfully loaded from the mapView, 
+  it triggers the fetching of data from the JSON file and then displays that data in the console.
+  */
   useEffect(() => {
     const fetchData = async () => {
       if (mapView) {
@@ -58,21 +61,41 @@ it triggers the fetching of data from the JSON file and then displays that data 
 
           mapView.map.add(geoJsonLayer);
 
+          // Adding throttled watch for extent
+          const throttledUpdate = throttle(() => {
+            geoJsonLayer.queryFeatures().then((result) => {
+              const visibleFeatures = result.features.filter((feature) => {
+                const geometry = feature.geometry;
+                if (geometry.type === "point") {
+                  const point = geometry as __esri.Point;
+                  return mapView.extent.contains(point);
+                }
+                return false;
+              });
+
+              setPointCount(visibleFeatures.length);
+            });
+          }, 200); // 200ms delay for throttling
+
+          mapView.watch("extent", throttledUpdate);
+
           const graphicsLayer = new GraphicsLayer();
           mapView.map.add(graphicsLayer);
+          /* 
+          Add your point and graphic to the graphics layer if needed
+          const point = new Point({
+            longitude: 36.47618573252876,
+            latitude: 28.4044846389379,
+          });
 
-          // Add your point and graphic to the graphics layer if needed
-          // const point = new Point({
-          //   longitude: 36.47618573252876,
-          //   latitude: 28.4044846389379,
-          // });
+          const graphic = new Graphic({
+            geometry: point,
+            symbol: simpleMarkerSymbol,
+          });
 
-          // const graphic = new Graphic({
-          //   geometry: point,
-          //   symbol: simpleMarkerSymbol,
-          // });
+          graphicsLayer.add(graphic);
 
-          // graphicsLayer.add(graphic);
+          */
         } catch (error) {
           console.error("Error", error);
         }
@@ -126,7 +149,7 @@ it triggers the fetching of data from the JSON file and then displays that data 
         {showLegends && <WorkforceLegends id="WorkforceLegends" />}
         {showWorkforce && (
           <div className="flex absolute top-4 left-[80px] space-x-4">
-            <Workforce id="Workforcen" />
+            <Workforce id="Workforcen" view={new MapView} />
           </div>
         )}
       </div>
