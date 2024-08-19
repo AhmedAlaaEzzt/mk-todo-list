@@ -50,6 +50,71 @@
           "type": "Point",
           "coordinates": [36.47679411735024, 28.40535674065721]
         }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "place": "Near Tabuk, Saudi Arabia",
+          "time": 1723102238142,
+          "title": "Tabuk, Saudi Arabia - New Crew Point",
+          "type": "crew"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [36.46642297389121, 28.393974865930545]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "place": "Near Tabuk, Saudi Arabia",
+          "time": 1723102238142,
+          "title": "Tabuk, Saudi Arabia - New Crew Point",
+          "type": "crew"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [36.46628686651144, 28.39385513239307]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "place": "Near Tabuk, Saudi Arabia",
+          "time": 1723102238142,
+          "title": "Tabuk, Saudi Arabia - New Crew Point",
+          "type": "crew"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [36.46647741684333, 28.39387907911143]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "place": "Near Tabuk, Saudi Arabia",
+          "time": 1723102238142,
+          "title": "Tabuk, Saudi Arabia - New Crew Point",
+          "type": "crew"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [36.511357657364385, 28.45653226775279]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "place": "Near Tabuk, Saudi Arabia",
+          "time": 1723102238142,
+          "title": "Tabuk, Saudi Arabia - New Crew Point",
+          "type": "crew"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [36.511995447174, 28.45629707985273]
+        }
       }
     ]
   }
