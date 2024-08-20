@@ -8,7 +8,7 @@ import earth from "../assets/imgs/earth.png";
 import blueprint from "../assets/imgs/blueprint.png";
 import SupWidget from "./SupWidget";
 import MapView from "@arcgis/core/views/MapView";
-// import Spas from './spas'; // استيراد Spas
+import Basemap from "@arcgis/core/Basemap";
 
 interface WorkforceProps {
   id: string;
@@ -18,8 +18,7 @@ interface WorkforceProps {
 const Workforce: React.FC<WorkforceProps> = ({ id, view }) => {
   const [showWorkforce, setShowWorkforce] = useState(false);
   const [showSpas, setShowSpas] = useState(false);
-  const [selectedFloor, setSelectedFloor] = useState("Floor"); // الطابق المبدئي
-
+  const [selectedFloor, setSelectedFloor] = useState("Floor");
   const floors = [
     {
       floorName: "Floor 01",
@@ -54,6 +53,15 @@ const Workforce: React.FC<WorkforceProps> = ({ id, view }) => {
       center: coordinates,
       zoom: 18,
     });
+  };
+
+  const handleBasemapChange = () => {
+    //Switch between Basemap
+    const newBasemap =
+      view.map.basemap.id === "hybrid"
+        ? Basemap.fromId("streets")
+        : Basemap.fromId("hybrid");
+    view.map.basemap = newBasemap;
   };
 
   return (
@@ -101,7 +109,10 @@ const Workforce: React.FC<WorkforceProps> = ({ id, view }) => {
         </div>
         <div className="space-y-4">
           <h2 className="text-sm font-semibold text-gray-600">General:</h2>
-          <div className="flex items-center justify-between">
+          <div
+            className="flex items-center justify-between cursor-pointer"
+            onClick={handleBasemapChange}
+          >
             <div className="flex items-center space-x-2">
               <img src={earth} alt="Earth" className="w-6 h-6" />
               <span className="font-medium">Base map</span>
