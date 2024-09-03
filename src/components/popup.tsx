@@ -1,7 +1,7 @@
 import PopupTemplate from "@arcgis/core/PopupTemplate";
 
 const template = new PopupTemplate({
-  title: "Meshari`s popup",
+  title: "popup",
   content: [
     {
       type: "fields",
